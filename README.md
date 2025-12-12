@@ -1,2 +1,2 @@
-# BE_POO_Template
+# Distributeur Automatique
 Projet BE C++, distributeur automatique
