@@ -1,20 +1,24 @@
 #include "periph.hpp"
 #include <stdio.h>
 #include <string>
-
+#include <arduino.h>
 periph::periph(){
-};
+}
 
-periph::periph(int N,char mod){
-    if ((mod == 'INPUT') or (mod == 'INPUT')){
+periph::periph(int N,int mod){ 
+    if (mod == INPUT){
     pin = N;
-    mode = mod;
+    mode = INPUT;
+    }else {
+    pin = N;
+    mode = OUTPUT;
     }
-};
+    
+}
 
 void periph::setup(){
     void setup(){
-    pinMode(pin, mod);
+    pinMode(pin, mode);
     }
 }
 
