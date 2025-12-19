@@ -1,10 +1,12 @@
 #ifndef button_hpp
 #define button_hpp
 
-class button{
+#include <arduino.h>
+
+class button : public periph{
 protected: 
+  int buttonpin;
   bool status = 0;
-  const int buttonPin;
 public:
     button();
     ~button();
