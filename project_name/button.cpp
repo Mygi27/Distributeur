@@ -4,10 +4,10 @@
 button::button(){
 };
 
-button::button(int N){
-
-};
 
 button::~button() {
 }
 
+bool button::isPressed(){
+    return status;
+}
