@@ -1,16 +1,16 @@
 #include "buzzer.hpp"
 #include <stdio.h>
 
-polygone::buzzer(){
+buzzer::buzzer(){
 };
 
-polygone::buzzer(int N){
+buzzer::buzzer(int N){
 
 };
 
-polygone::~buzzer() {
+buzzer::~buzzer() {
 }
 
-void polygone::buzzer(){
+void buzzer::buzzer(){
 
 };

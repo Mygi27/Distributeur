@@ -1,15 +1,26 @@
-#include "Application.h"
+#include <rgb_lcd.h>
 
-Application myApplication;
+#include "button.hpp"
+#include "buzzer.hpp"
+#include "rotary.hpp"
+#include "servo.hpp"
+#include <stdio.h>
+#include <Wire.h>
 
-void setup() 
-{
-  // put your setup code here, to run once:
-  myApplication.init();
+rgb_lcd lcd;
+
+void setup() {
+    // set up the LCD's number of columns and rows:
+    lcd.begin(16, 2);
+    // Print a message to the LCD.
+    lcd.print("choisissez votre boisson !");
 }
 
-void loop() 
-{
-  // put your main code here, to run repeatedly:
-  myApplication.run();
+void loop() {
+    // Turn off the display:
+    lcd.noDisplay();
+    delay(500);
+    // Turn on the display:
+    lcd.display();
+    delay(500);
 }
