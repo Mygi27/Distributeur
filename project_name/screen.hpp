@@ -1,7 +1,8 @@
 #ifndef screen_hpp
 #define screen_hpp
+#include "print.h"
 
-class screen{
+class screen : public Print{
 protected: 
   int nbCotes; 
 public:
