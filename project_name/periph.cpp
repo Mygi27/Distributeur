@@ -1,7 +1,11 @@
 #include "periph.hpp"
 #include <stdio.h>
 #include <string>
-#include <arduino.h>
+//#include <arduino.h>
+
+#define INPUT 0x00
+#define ONPUT 0x01
+
 periph::periph(){
 }
 

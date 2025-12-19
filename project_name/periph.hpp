@@ -1,13 +1,13 @@
 #ifndef PERIPH_hpp
 #define PERIPH_hpp
 #include <string>
+//#include <arduino.h>
 using namespace std;
-
 
 class periph{
 protected: 
   int pin;
-  string mode;
+  int mode; // INPUT or OUTPUT
 public:
     periph();
     periph(int N,string mod);
