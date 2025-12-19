@@ -19,8 +19,8 @@ void setup() {
 void loop() {
     // Turn off the display:
     lcd.noDisplay();
-    delay(500);
+    delay(800);
     // Turn on the display:
     lcd.display();
-    delay(500);
+    delay(800);
 }

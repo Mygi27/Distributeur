@@ -1,16 +1,12 @@
 #include "rotary.hpp"
 #include <stdio.h>
 
-polygone::rotary(){
+rotary::rotary(){
 };
 
-polygone::rotary(int N){
+rotary::rotary(int N){
 
 };
 
-polygone::~rotary() {
+rotary::~rotary() {
 }
-
-void polygone::rotary(){
-
-};

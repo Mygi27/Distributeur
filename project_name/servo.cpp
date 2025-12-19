@@ -10,7 +10,3 @@ servo::servo(int N){
 
 servo::~servo() {
 }
-
-void servo::servo(){
-
-};

@@ -3,11 +3,12 @@
 
 class button{
 protected: 
-  int nbCotes; 
+  bool status = 0;
+  const int buttonPin;
 public:
     button();
-    button(int N);
     ~button();
+    bool isPressed();
 };
 
 #endif
