@@ -2,7 +2,6 @@
 #define PERIPH_hpp
 #include <string>
 //#include <arduino.h>
-using namespace std;
 
 class Periph{
 protected: 
