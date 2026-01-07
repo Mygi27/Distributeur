@@ -14,6 +14,7 @@ const char* boissons[] = {"1. Cafe", "2. The", "3. Chocolat"};
 int choixActuel = 0;
 
 void setup() {
+    Serial.begin(9600);
     ecran.begin();
     sensor.begin();
     btnValider.begin();
@@ -25,24 +26,28 @@ void setup() {
     ecran.afficher("Boisson :", boissons[0]);
 }
 
+
+
 void loop() {
     // --- 1. Gestion de la sélection (Rotation) ---
     int nouveauChoix = sensor.readSelection();
-
+    Serial.println(nouveauChoix);
     if (nouveauChoix != -1) {
         choixActuel = nouveauChoix;
-        // Mise à jour simple de l'écran
+        Serial.print("Selection : ");
+        Serial.print(choixActuel); // Affiche 0, 1 ou 2
+        Serial.print(" | Boisson : ");
+        Serial.print(boissons[choixActuel]); // Affiche "Cafe" etc.
+        Serial.print(" | Valeur brute Capteur : ");
+        Serial.println(analogRead(A0));
         ecran.afficher("Boisson :", boissons[choixActuel]);
-        // Petit bruitage
-        buzzer.beep(10); 
     }
 
     // --- 2. Gestion de la validation (Appui) ---
-    if (btnValider.isPressed() == 0) {
+    if (btnValider.isPressed()) {
         buzzer.beep(100); 
         
         // Changement de couleur pour indiquer la préparation (Vert)
-        ecran.setColor(0, 255, 0); 
         ecran.afficher("Preparation...", boissons[choixActuel]);
         
         delay(3000); // Temps de préparation
@@ -51,7 +56,6 @@ void loop() {
         delay(2000);
         
         // Retour à l'état initial (Blanc)
-        ecran.setColor(255, 255, 255);
         ecran.afficher("Boisson :", boissons[choixActuel]);
     }
 }

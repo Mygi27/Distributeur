@@ -12,6 +12,7 @@ public:
     RotarySensor(int pin, int nbChoix);
     ~RotarySensor();
     int readSelection();
+    int getCurrentState();
 };
 
 #endif

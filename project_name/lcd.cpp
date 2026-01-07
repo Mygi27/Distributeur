@@ -24,9 +24,6 @@ void Lcd::afficher(String ligne1, String ligne2) {
     _lcd.print(ligne2);
 }
 
-void Lcd::setColor(int r, int g, int b) {
-    _lcd.setRGB(r, g, b);
-}
 
 void Lcd::clear() {
     _lcd.clear();

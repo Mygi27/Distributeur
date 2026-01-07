@@ -17,8 +17,6 @@ public:
 
     void afficher(String ligne1, String ligne2);
 
-    void setColor(int r, int g, int b);
-
     void clear();
 };
 
