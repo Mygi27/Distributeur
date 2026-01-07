@@ -1,13 +1,22 @@
 #ifndef servo_hpp
 #define servo_hpp
 
-class servo{
-protected: 
-  int nbCotes; 
+#include "periph.hpp"
+#include <Servo.h>
+
+
+class ServoMoteur : public Periph {
+private:
+    Servo _servo;
+    int _angleFerme;
+    int _angleOuvert;
+
 public:
-    servo();
-    servo(int N);
-    ~servo();
+    ServoMoteur(int pin);
+    ~ServoMoteur();
+
+    void begin();
+    void distribuer(int tempsOuverture);
 };
 
 #endif
