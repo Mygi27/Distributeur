@@ -1,13 +1,14 @@
 #ifndef buzzer_hpp
 #define buzzer_hpp
+#include "periph.hpp"
 
-class buzzer{
-protected: 
-  int nbCotes; 
+class Buzzer : public Periph {
 public:
-    buzzer();
-    buzzer(int N);
-    ~buzzer();
+    Buzzer(int pin);
+    ~Buzzer();
+    
+    void beep(int duration);
+    void stop();
 };
 
 #endif

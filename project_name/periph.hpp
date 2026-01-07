@@ -4,15 +4,14 @@
 //#include <arduino.h>
 using namespace std;
 
-class periph{
+class Periph{
 protected: 
-  int pin;
-  int mode; // INPUT or OUTPUT
+  int _pin;
+  int _mode; // INPUT or OUTPUT
 public:
-    periph();
-    periph(int N,string mod);
-    ~periph();
-    void setup();
+    Periph(int pin,int mode);
+    ~Periph();
+    void begin();
 };
 
 #endif

@@ -1,23 +1,12 @@
 #include "button.hpp"
-#include <stdio.h>
-//#include <arduino.h>
+#include <arduino.h>
 
-#define INPUT 0x00
-#define ONPUT 0x01
-
-button::button(): periph(0,INPUT),buttonpin(0){
-    printf("construction bouton pin %d\n",pin);
-};
-
-
-button::button(int pin): periph(pin,INPUT),buttonpin(pin){
-    printf("construction bouton pin %d\n",pin);
-};
-
-
-button::~button() {
+Button::Button(int pin) : Periph(pin, INPUT_PULLUP) {
 }
 
-bool button::isPressed(){
-    return digitalRead(buttonPin);
+Button::~Button() {
+}
+
+bool Button::isPressed() {
+    return (digitalRead(_pin) == LOW);
 }

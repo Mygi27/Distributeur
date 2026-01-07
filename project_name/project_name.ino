@@ -1,26 +1,21 @@
-#include <rgb_lcd.h>
-
 #include "button.hpp"
 #include "buzzer.hpp"
-#include "rotary.hpp"
-#include "servo.hpp"
-#include <stdio.h>
-#include <Wire.h>
+// #include "rotary.hpp" // À adapter sur le même modèle que Buzzer
+// #include "servo.hpp"  // À adapter
 
-rgb_lcd lcd;
+// Instanciation des objets (Exemple: Bouton sur D2, Buzzer sur D3)
+Button btnValider(2); 
+Buzzer buzzer(3);
 
 void setup() {
-    // set up the LCD's number of columns and rows:
-    lcd.begin(16, 2);
-    // Print a message to the LCD.
-    lcd.print("choisissez votre boisson !");
+    btnValider.begin();
+    buzzer.begin();
 }
 
 void loop() {
-    // Turn off the display:
-    lcd.noDisplay();
-    delay(800);
-    // Turn on the display:
-    lcd.display();
-    delay(800);
+    // Exemple d'utilisation
+    if (btnValider.isPressed()) {
+        buzzer.beep(100); // Bip sonore
+        delay(500); // Anti-rebond simple
+    }
 }
