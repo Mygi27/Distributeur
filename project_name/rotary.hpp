@@ -1,13 +1,17 @@
 #ifndef rotary_hpp
 #define rotary_hpp
 
-class rotary{
-protected: 
-  int nbCotes; 
+#include "periph.hpp"
+
+class RotarySensor : public Periph {
+private:
+    int _nbChoix;
+    int _lastSelection;
+
 public:
-    rotary();
-    rotary(int N);
-    ~rotary();
+    RotarySensor(int pin, int nbChoix);
+    ~RotarySensor();
+    int readSelection();
 };
 
 #endif
