@@ -31,7 +31,6 @@ void setup() {
 
 
 void loop() {
-    // --- 1. Gestion de la sélection (Rotation) ---
     int nouveauChoix = sensor.readSelection();
     Serial.println(nouveauChoix);
     if (nouveauChoix != -1) {
@@ -45,7 +44,8 @@ void loop() {
         buzzer.beep(50);
         
         while(paiement.isPressed()==LOW){
-        ecran.afficher("Payer par carte" , boissons[choixActuel]);    
+        ecran.afficher("Payer par carte" , boissons[choixActuel]); 
+        delay(2000);   
         }
         
 
