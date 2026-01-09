@@ -63,8 +63,9 @@ void loop() {
         }
     }
 
-
-    if (random(10) > 8 and paiement_effect == true) {
+    if (paiement_effect == false) {
+    }
+    else if (random(10) > 8) {
         ecran.afficher("Paiement refuse", "Reessayez");
         buzzer.beep(200); // Bip long d'erreur
         delay(2000);
