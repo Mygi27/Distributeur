@@ -47,7 +47,12 @@ void loop() {
         ecran.afficher("Payer par carte" , boissons[choixActuel]); 
         delay(2000);   
         }
-        
+        buzzer.beep(50);
+        delay(500);
+        buzzer.beep(50);
+        delay(1000);
+        ecran.afficher("Servi !", "Buvez bien !");
+        delay(3000);
 
         ecran.afficher("Preparation...", boissons[choixActuel]);
         monServo.distribuer(2000);
@@ -55,7 +60,8 @@ void loop() {
         ecran.afficher("Servi !", "Buvez bien !");
         delay(2000);
         
- 
+        ecran.afficher("Bienvenue !", "Tournez bouton");
+        delay(2000);
         ecran.afficher("Boisson :", boissons[choixActuel]);
     }
 }

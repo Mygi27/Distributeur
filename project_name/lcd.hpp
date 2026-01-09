@@ -7,7 +7,7 @@
 
 class Lcd : public Periph {
 private:
-    rgb_lcd _lcd; // L'objet lcd "réel" est contenu dans notre classe
+    rgb_lcd _lcd; // classe rgb_lcd defini dans rgb_lcd.h 
 
 public:
     Lcd();
