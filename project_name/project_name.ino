@@ -36,7 +36,7 @@ void setup() {
 
 void loop() {
     int nouveauChoix = sensor.readSelection(); 
-    Serial.println(nouveauChoix); //choix de la boisson
+    analogRead(A0);
     if (nouveauChoix != -1) {
         choixActuel = nouveauChoix;
         ecran.afficher("Boisson :", boissons[choixActuel]);

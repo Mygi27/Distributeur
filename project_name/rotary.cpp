@@ -12,7 +12,7 @@ int RotarySensor::getCurrentState() {
 
     if (rawValue > 1015) rawValue = 1023; 
     if (rawValue < 10) rawValue = 0;      
-    int selection = map(rawValue, 0, 1024, 0, _nbChoix);
+    int selection = map(rawValue, 1024, 0 , 0, _nbChoix);
     selection = constrain(selection, 0, _nbChoix - 1); //if (selection > _nbChoix-1) throw 1; // exception si une boisson hors index est sélectionnée.
     return selection;
 }
