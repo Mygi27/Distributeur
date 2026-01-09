@@ -15,6 +15,8 @@ ServoMoteur monServo(15);
 //initialisation du menu des boissons
 const char* boissons[] = {"1. Coca 2E", "2. Sprite 2E", "3. Orangina 2E","4. Lait 1,50E","5. Vodka 4E","6. Eau 1E"};
 int choixActuel = 0;
+bool paiement_effect = false;
+
 
 //initialisation des capteurs et actionneurs
 void setup() {
@@ -33,39 +35,62 @@ void setup() {
 
 
 void loop() {
-    int nouveauChoix = sensor.readSelection();
-    Serial.println(nouveauChoix);
+    int nouveauChoix = sensor.readSelection(); 
+    Serial.println(nouveauChoix); //choix de la boisson
     if (nouveauChoix != -1) {
         choixActuel = nouveauChoix;
         ecran.afficher("Boisson :", boissons[choixActuel]);
         buzzer.beep(50);
     }
 
-    if (btnValider.isPressed()) {
-        buzzer.beep(50); 
-        buzzer.beep(50);
+   if (btnValider.isPressed()) { // Validation du choix de la boisson
+    buzzer.beep(50);
+    ecran.afficher("Payer par carte", boissons[choixActuel]);
+    
+    unsigned long tempsDebut = millis();
+    paiement_effect = false;
+    while (paiement_effect == false) {
         
-        while(paiement.isPressed()==LOW){
-        ecran.afficher("Payer par carte" , boissons[choixActuel]); 
-        delay(2000);   
+        // Si on attend depuis plus de 7 secondes (7000 ms), on annule tout
+        if (millis() - tempsDebut > 7000) {
+            ecran.afficher("Temps ecoule", "Annulation");
+            delay(2000);
+            break; // On sort de la fonction (retour au début)
         }
+        delay(50);
+        if (paiement.isPressed()){
+        paiement_effect = true;
+        }
+    }
+
+
+    if (random(10) > 8 and paiement_effect == true) {
+        ecran.afficher("Paiement refuse", "Reessayez");
+        buzzer.beep(200); // Bip long d'erreur
+        delay(2000);
+    } 
+    else {
+        ecran.afficher("Paiement accepte !", "Preparation...");
         buzzer.beep(50);
-        delay(500);
+        delay(100);
         buzzer.beep(50);
         delay(1000);
-        ecran.afficher("Servi !", "Buvez bien !");
-        delay(3000);
 
         ecran.afficher("Preparation...", boissons[choixActuel]);
         monServo.distribuer(2000);
-        
+
         ecran.afficher("Servi !", "Buvez bien !");
-        delay(2000);
-        
+        delay(3000);
+
         ecran.afficher("Bienvenue !", "Tournez bouton");
         delay(2000);
+        }
         ecran.afficher("Boisson :", boissons[choixActuel]);
+
     }
+}    
+        
+        
 
     /*
 
@@ -78,4 +103,4 @@ void loop() {
             default: Serial.println("nouveauChoix");
         } }
      */
-}
+
