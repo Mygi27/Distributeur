@@ -12,9 +12,11 @@ Lcd ecran;
 RotarySensor sensor(A0, 6);
 ServoMoteur monServo(15);
 
+//initialisation du menu des boissons
 const char* boissons[] = {"1. Coca 2E", "2. Sprite 2E", "3. Orangina 2E","4. Lait 1,50E","5. Vodka 4E","6. Eau 1E"};
 int choixActuel = 0;
 
+//initialisation des capteurs et actionneurs
 void setup() {
     Serial.begin(9600);
     ecran.begin();
@@ -64,4 +66,16 @@ void loop() {
         delay(2000);
         ecran.afficher("Boisson :", boissons[choixActuel]);
     }
+
+    /*
+
+    catch (int erreur){
+        switch(erreur){
+            case 1 : Serial.println("Boisson hors index");
+            nouveauChoix = 6;
+            break;
+            case 2 : Serial.println("nouveauChoix"); break
+            default: Serial.println("nouveauChoix");
+        } }
+     */
 }
