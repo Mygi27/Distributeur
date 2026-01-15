@@ -14,7 +14,7 @@ ServoMoteur monServo(15);
 
 //initialisation du menu des boissons
 const char* boissons[] = {"1. Coca 2E", "2. Sprite 2E", "3. Orangina 2E","4. Lait 1,50E","5. Vodka 4E","6. Eau 1E"};
-int choixActuel = 0;
+int choixActuel = -1;
 bool paiement_effect = false;
 
 
@@ -26,18 +26,19 @@ void setup() {
     btnValider.begin();
     buzzer.begin();
     monServo.begin();
-
+    
+    choixActuel = sensor.readSelection();
     ecran.afficher("Bienvenue !", "Tournez bouton");
-    delay(2000);
-    ecran.afficher("Boisson :", boissons[0]);
+    //delay(2000);
+    //ecran.afficher("Boisson :", boissons[0]);
 }
 
 
-
+// affichage du choix de la boisson
 void loop() {
     int nouveauChoix = sensor.readSelection(); 
-    analogRead(A0);
-    if (nouveauChoix != -1) {
+    //analogRead(A0);
+    if (nouveauChoix != -1 && nouveauChoix != choixActuel) {
         choixActuel = nouveauChoix;
         ecran.afficher("Boisson :", boissons[choixActuel]);
         buzzer.beep(50);
@@ -45,13 +46,13 @@ void loop() {
 
    if (btnValider.isPressed()) { // Validation du choix de la boisson
     buzzer.beep(50);
-    ecran.afficher("Payer par carte", boissons[choixActuel]);
+    ecran.afficher("Payer par carte", boissons[choixActuel]); //attente du paiement
     
     unsigned long tempsDebut = millis();
     paiement_effect = false;
     while (paiement_effect == false) {
         
-        // Si on attend depuis plus de 7 secondes (7000 ms), on annule tout
+        // Si on attend depuis plus de 7 secondes pour le paiement, on annule tout
         if (millis() - tempsDebut > 7000) {
             ecran.afficher("Temps ecoule", "Annulation");
             delay(2000);
@@ -65,7 +66,7 @@ void loop() {
 
     if (paiement_effect == false) {
     }
-    else if (random(10) > 8) {
+    else if (random(10) > 8) { // 1/10 chances d'avoir un paiement refusé
         ecran.afficher("Paiement refuse", "Reessayez");
         buzzer.beep(200); // Bip long d'erreur
         delay(2000);
@@ -92,16 +93,4 @@ void loop() {
 }    
         
         
-
-    /*
-
-    catch (int erreur){
-        switch(erreur){
-            case 1 : Serial.println("Boisson hors index");
-            nouveauChoix = 6;
-            break;
-            case 2 : Serial.println("nouveauChoix"); break
-            default: Serial.println("nouveauChoix");
-        } }
-     */
 

@@ -9,7 +9,6 @@ Lcd::~Lcd() {
 }
 
 void Lcd::begin() {
-
     _lcd.begin(16, 2);
     _lcd.setRGB(255, 255, 255);
 }

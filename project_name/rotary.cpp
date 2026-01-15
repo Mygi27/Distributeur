@@ -7,12 +7,14 @@ RotarySensor::RotarySensor(int pin, int nbChoix) : Periph(pin, INPUT), _nbChoix(
 RotarySensor::~RotarySensor() {
 }
 
+
+//Donne en entier entre 1 et _nbChoix pour avoir le choix de la boisson
 int RotarySensor::getCurrentState() {
     int rawValue = analogRead(_pin);
 
     if (rawValue > 1015) rawValue = 1023; 
     if (rawValue < 10) rawValue = 0;      
-    int selection = map(rawValue, 1024, 0 , 0, _nbChoix);
+    int selection = map(rawValue, 1015, 15, 0, _nbChoix);
     selection = constrain(selection, 0, _nbChoix - 1); //if (selection > _nbChoix-1) throw 1; // exception si une boisson hors index est sélectionnée.
     return selection;
 }

@@ -12,11 +12,8 @@ private:
 public:
     Lcd();
     ~Lcd();
-
     void begin();
-
     void afficher(String ligne1, String ligne2);
-
     void clear();
 };
 
