@@ -29,15 +29,12 @@ void setup() {
     
     choixActuel = sensor.readSelection();
     ecran.afficher("Bienvenue !", "Tournez bouton");
-    //delay(2000);
-    //ecran.afficher("Boisson :", boissons[0]);
 }
 
 
 // affichage du choix de la boisson
 void loop() {
     int nouveauChoix = sensor.readSelection(); 
-    //analogRead(A0);
     if (nouveauChoix != -1 && nouveauChoix != choixActuel) {
         choixActuel = nouveauChoix;
         ecran.afficher("Boisson :", boissons[choixActuel]);
@@ -85,9 +82,7 @@ void loop() {
         delay(3000);
 
         ecran.afficher("Bienvenue !", "Tournez bouton");
-        delay(2000);
         }
-        ecran.afficher("Boisson :", boissons[choixActuel]);
 
     }
 }    
